@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus - Hospital Management System</title>
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="container navbar">
+            <div class="logo-container">
+                <span class="logo-icon"><i class="fas fa-hospital-user"></i></span>
+                <span class="logo-text">CarePlus</span>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a class="nav-link active" data-target="home">Home</a></li>
+                    <li><a class="nav-link" data-target="registration">Register Patient</a></li>
+                    <li><a class="nav-link" data-target="doctors">Doctors</a></li>
+                    <li><a class="nav-link" data-target="booking">Book Appointment</a></li>
+                    <li><a class="nav-link" data-target="records">Patient Records</a></li>
+                    <li><a class="nav-link" data-target="dashboard">Dashboard</a></li>
+                    <li><a class="nav-link" data-target="contact">Contact</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-btn" title="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area (SPA Toggled Sections) -->
+    <main class="container">
+        
+        <!-- 1. Home Section -->
+        <section id="home" class="page-section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h1 class="hero-title">Your Health, Our Commitment</h1>
+                    <p class="hero-subtitle">Providing exceptional healthcare services with state-of-the-art facilities and a team of dedicated medical specialists.</p>
+                    <button class="btn-primary btn-trigger-booking" style="margin-right: 15px;">Book Appointment</button>
+                    <button class="btn-primary" style="background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);" onclick="navigateToSection('registration')">New Registration</button>
+                </div>
+                <div class="hero-image-container">
+                    <!-- Clean SVG Graphic for medical checkup -->
+                    <svg class="hero-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="320" width="400" height="20" rx="10" fill="#E2F0FE"/>
+                        <rect x="180" y="100" width="140" height="220" rx="10" fill="#0D6EFD" fill-opacity="0.1"/>
+                        <circle cx="250" cy="180" r="40" fill="#0D6EFD" fill-opacity="0.2"/>
+                        <path d="M250 160V200" stroke="#0D6EFD" stroke-width="6" stroke-linecap="round"/>
+                        <path d="M230 180H270" stroke="#0D6EFD" stroke-width="6" stroke-linecap="round"/>
+                        <rect x="80" y="180" width="80" height="140" rx="5" fill="#E2F0FE"/>
+                        <line x1="95" y1="210" x2="145" y2="210" stroke="#0D6EFD" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="95" y1="230" x2="130" y2="230" stroke="#0D6EFD" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="95" y1="250" x2="140" y2="250" stroke="#0D6EFD" stroke-width="3" stroke-linecap="round"/>
+                        <rect x="340" y="150" width="80" height="170" rx="5" fill="#E2F0FE"/>
+                        <circle cx="380" cy="190" r="15" fill="#0D6EFD" fill-opacity="0.3"/>
+                        <line x1="360" y1="230" x2="400" y2="230" stroke="#0D6EFD" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="360" y1="250" x2="390" y2="250" stroke="#0D6EFD" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="about-section">
+                <h2 class="section-title">About Our Hospital</h2>
+                <div class="about-grid">
+                    <div class="about-img-container">
+                        <svg class="about-svg" viewBox="0 0 500 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="100" y="50" width="300" height="250" rx="15" fill="#E2F0FE" stroke="#0D6EFD" stroke-width="2"/>
+                            <rect x="150" y="100" width="200" height="150" rx="10" fill="#FFFFFF"/>
+                            <path d="M250 130V170" stroke="#0D6EFD" stroke-width="8" stroke-linecap="round"/>
+                            <path d="M230 150H270" stroke="#0D6EFD" stroke-width="8" stroke-linecap="round"/>
+                            <circle cx="180" cy="220" r="8" fill="#198754"/>
+                            <circle cx="250" cy="220" r="8" fill="#198754"/>
+                            <circle cx="320" cy="220" r="8" fill="#198754"/>
+                        </svg>
+                    </div>
+                    <div class="about-text">
+                        <h3>Caring for the Community Since 2010</h3>
+                        <p>CarePlus Hospital is a premier multi-specialty healthcare institution dedicated to providing top-notch medical services. With a team of highly qualified doctors, trained nursing staff, and modern diagnostic technologies, we ensure that every patient receives compassionate and comprehensive care.</p>
+                        <p>We pride ourselves on clinical excellence and patient safety. Our patient-centric approach ensures you receive standard care from consultation through recovery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="services-section">
+                <h2 class="section-title">Key Services</h2>
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-ambulance"></i></div>
+                        <h3>24/7 Emergency</h3>
+                        <p>Round-the-clock emergency support with fully equipped ambulances and trauma care specialists.</p>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+                        <h3>Cardiology</h3>
+                        <p>Complete heart care including diagnostics, therapy, and specialized coronary surgical procedures.</p>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <h3>Pediatrics</h3>
+                        <p>Specialized physical and emotional care for infants, kids, and teens in a comfortable setting.</p>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Neurology</h3>
+                        <p>Expert diagnostic tests and treatment for chronic nerve, spine, and brain disorders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Patient Registration Section -->
+        <section id="registration" class="page-section">
+            <h2 class="section-title">Patient Registration Form</h2>
+            
+            <div class="form-container">
+                <div id="reg-alert" class="alert"></div>
+
+                <form id="patient-reg-form" novalidate>
+                    <!-- Patient Name -->
+                    <div class="form-group">
+                        <label for="reg-name" class="form-label">Full Name <span style="color:red;">*</span></label>
+                        <input type="text" id="reg-name" class="form-control" placeholder="Enter patient's full name">
+                        <div class="error-msg">Please enter a valid name</div>
+                    </div>
+
+                    <!-- Age & Gender -->
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 120px;">
+                            <label for="reg-age" class="form-label">Age <span style="color:red;">*</span></label>
+                            <input type="number" id="reg-age" class="form-control" placeholder="Age" min="1" max="120">
+                            <div class="error-msg">Enter a valid age</div>
+                        </div>
+                        <div class="form-group" style="flex: 2; min-width: 200px;">
+                            <label class="form-label">Gender <span style="color:red;">*</span></label>
+                            <div class="gender-options">
+                                <label class="gender-option">
+                                    <input type="radio" name="gender" id="gender-male" value="Male"> Male
+                                </label>
+                                <label class="gender-option">
+                                    <input type="radio" name="gender" id="gender-female" value="Female"> Female
+                                </label>
+                                <label class="gender-option">
+                                    <input type="radio" name="gender" id="gender-other" value="Other"> Other
+                                </label>
+                            </div>
+                            <div class="error-msg" style="margin-top: 10px;">Please select gender</div>
+                        </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="reg-phone" class="form-label">Phone Number <span style="color:red;">*</span></label>
+                        <input type="tel" id="reg-phone" class="form-control" placeholder="Enter 10-digit mobile number">
+                        <div class="error-msg">Enter a valid 10-digit phone number</div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="reg-address" class="form-label">Residential Address <span style="color:red;">*</span></label>
+                        <textarea id="reg-address" class="form-control" placeholder="Enter complete residential address"></textarea>
+                        <div class="error-msg">Please enter address</div>
+                    </div>
+
+                    <!-- Disease/Symptoms -->
+                    <div class="form-group">
+                        <label for="reg-symptoms" class="form-label">Symptoms / Disease Description <span style="color:red;">*</span></label>
+                        <textarea id="reg-symptoms" class="form-control" placeholder="Enter symptoms or brief reason for visiting"></textarea>
+                        <div class="error-msg">Please specify symptoms</div>
+                    </div>
+
+                    <!-- Register Button -->
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Register Patient</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 3. Doctor Information Section -->
+        <section id="doctors" class="page-section">
+            <h2 class="section-title">Our Medical Team</h2>
+            <!-- Doctor Grid populated dynamically by script.js -->
+            <div id="doctors-list-container" class="doctors-grid"></div>
+        </section>
+
+        <!-- 4. Appointment Booking Section -->
+        <section id="booking" class="page-section">
+            <h2 class="section-title">Book an Appointment</h2>
+            
+            <div class="form-container">
+                <div id="appt-alert" class="alert"></div>
+
+                <form id="appointment-form" novalidate>
+                    <!-- Doctor Selection -->
+                    <div class="form-group">
+                        <label for="appt-doctor" class="form-label">Select Doctor <span style="color:red;">*</span></label>
+                        <select id="appt-doctor" class="form-control">
+                            <option value="">-- Select Specialist --</option>
+                        </select>
+                        <div class="error-msg">Please select a doctor</div>
+                    </div>
+
+                    <!-- Patient Name -->
+                    <div class="form-group">
+                        <label for="appt-patient-name" class="form-label">Patient Name <span style="color:red;">*</span></label>
+                        <input type="text" id="appt-patient-name" class="form-control" placeholder="Enter patient's name">
+                        <div class="error-msg">Please enter patient name</div>
+                    </div>
+
+                    <!-- Date & Time Slot -->
+                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 180px;">
+                            <label for="appt-date" class="form-label">Date <span style="color:red;">*</span></label>
+                            <input type="date" id="appt-date" class="form-control">
+                            <div class="error-msg">Enter a valid date</div>
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 180px;">
+                            <label for="appt-slot" class="form-label">Time Slot <span style="color:red;">*</span></label>
+                            <select id="appt-slot" class="form-control">
+                                <option value="">-- Select Slot --</option>
+                                <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                                <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                            </select>
+                            <div class="error-msg">Please select a time slot</div>
+                        </div>
+                    </div>
+
+                    <!-- Book Button -->
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Book Appointment</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 5. Patient Records Section -->
+        <section id="records" class="page-section">
+            <h2 class="section-title">Patient Database</h2>
+            
+            <div class="table-header-actions">
+                <div class="search-box-container">
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                    <input type="text" id="search-patient" class="form-control search-input" placeholder="Search patient by name...">
+                </div>
+                <button class="btn-primary" onclick="navigateToSection('registration')">
+                    <i class="fas fa-user-plus" style="margin-right: 5px;"></i> Add New Patient
+                </button>
+            </div>
+
+            <!-- Patient Records Table -->
+            <div class="table-responsive">
+                <table class="records-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                            <th>Symptoms/Disease</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="records-table-body">
+                        <!-- Populated by script.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. Admin Dashboard -->
+        <section id="dashboard" class="page-section">
+            <h2 class="section-title">Admin Dashboard</h2>
+
+            <!-- Metric Summary Cards -->
+            <div class="dashboard-grid">
+                <!-- Card 1: Patients -->
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Total Patients</h4>
+                        <div id="total-patients-stat" class="stat-value">0</div>
+                    </div>
+                    <div class="stat-icon-wrapper">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                </div>
+                <!-- Card 2: Appointments -->
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Appointments</h4>
+                        <div id="total-appointments-stat" class="stat-value">0</div>
+                    </div>
+                    <div class="stat-icon-wrapper">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                </div>
+                <!-- Card 3: Doctors -->
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Total Doctors</h4>
+                        <div id="total-doctors-stat" class="stat-value">0</div>
+                    </div>
+                    <div class="stat-icon-wrapper">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Logs Panel & Quick Tools -->
+            <div class="dashboard-details-row">
+                <!-- Activity Logs Panel -->
+                <div class="dashboard-panel">
+                    <h3 class="panel-title"><i class="fas fa-history" style="margin-right: 8px;"></i> Recent System Activity</h3>
+                    <ul id="recent-activity-list" class="activity-list">
+                        <!-- Populated by script.js -->
+                    </ul>
+                </div>
+
+                <!-- Shortcuts / Quick Links -->
+                <div class="dashboard-panel">
+                    <h3 class="panel-title"><i class="fas fa-cogs" style="margin-right: 8px;"></i> Quick Actions</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px; padding-top: 10px;">
+                        <button class="btn-book" onclick="navigateToSection('registration')">
+                            <i class="fas fa-user-plus" style="margin-right: 8px;"></i> Register New Patient
+                        </button>
+                        <button class="btn-book" onclick="navigateToSection('booking')">
+                            <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> Book New Appointment
+                        </button>
+                        <button class="btn-book" onclick="navigateToSection('records')">
+                            <i class="fas fa-file-medical" style="margin-right: 8px;"></i> View Patient Database
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Contact Section -->
+        <section id="contact" class="page-section">
+            <h2 class="section-title">Get in Touch</h2>
+            
+            <div class="contact-layout">
+                <!-- Contact Info Panel -->
+                <div class="contact-info-panel">
+                    <h3>Contact Information</h3>
+                    <p style="margin-bottom: 30px; font-size: 0.95rem;">Feel free to reach out to us with any queries or emergencies. We are happy to assist you.</p>
+                    
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <div class="contact-info-text">
+                            <h4>Hospital Address</h4>
+                            <p>123 Health Care Boulevard, Sector 4, Tech City, Karnataka - 560001</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"><i class="fas fa-phone-alt"></i></span>
+                        <div class="contact-info-text">
+                            <h4>Phone Number</h4>
+                            <p>Emergency: +91 91191 19119<br>Helpdesk: +91 80 1234 5678</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon"><i class="fas fa-envelope"></i></span>
+                        <div class="contact-info-text">
+                            <h4>Email Address</h4>
+                            <p>contact@careplushospital.com<br>support@careplushospital.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Panel -->
+                <div class="contact-form-panel form-container" style="margin: 0;">
+                    <div id="contact-alert" class="alert"></div>
+
+                    <form id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">Your Name <span style="color:red;">*</span></label>
+                            <input type="text" id="contact-name" class="form-control" placeholder="Enter your full name">
+                            <div class="error-msg">Please enter your name</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Email Address <span style="color:red;">*</span></label>
+                            <input type="email" id="contact-email" class="form-control" placeholder="Enter your email address">
+                            <div class="error-msg">Please enter a valid email</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">Message / Query <span style="color:red;">*</span></label>
+                            <textarea id="contact-message" class="form-control" placeholder="Type your query or feedback here"></textarea>
+                            <div class="error-msg">Message must be at least 10 characters long</div>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-hospital-user" style="margin-right: 8px;"></i>CarePlus Hospital
+            </div>
+            <div>
+                <p>&copy; 2026 CarePlus Hospital. All Rights Reserved. | B.Tech Mini-Project</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#" onclick="navigateToSection('home')">Home</a></li>
+                <li><a href="#" onclick="navigateToSection('doctors')">Doctors</a></li>
+                <li><a href="#" onclick="navigateToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Font Awesome Icon Kit Code (if needed, already included above) -->
+    <!-- Custom Script File -->
+    <script src="script.js"></script>
+</body>
+</html>
